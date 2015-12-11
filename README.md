@@ -1,5 +1,5 @@
 # DVCodeBase
 Base library for extracting data from Dynamic Visual Codes.
 
-#Standard
+#Specification
 All versions of the DVCode standard are available in /doc/standard.
