@@ -1,7 +1,7 @@
 #Dynamic Visual Code Specification
 
 ##Groups
-- A group contains a group of adjacent pixels with the same color as most intense.
+- A group contains a group of adjacent pixels with the same component (red, green, blue) as most intense.
 - References to children (determined by their parent) and a parent (determined by adjacent group of lowest tier, if more than one, dvcode is invalid).
 - Tier determined by number of indirect parents.
 - Type {R, G, B} determined by most intense color component.
