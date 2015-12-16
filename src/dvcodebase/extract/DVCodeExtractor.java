@@ -3,12 +3,9 @@ package dvcodebase.extract;
 import com.deb.lib.image.FloatingImage;
 import com.deb.lib.image.IRGBImage;
 
+import dvcodebase.testing.TestStart;
+
 public class DVCodeExtractor {
-	int blurRadius;
-	
-	public DVCodeExtractor() {
-		this.blurRadius = 2;
-	}
 	
 	/**
 	 * Extracts the dvcode from an image with default operators.
@@ -16,15 +13,18 @@ public class DVCodeExtractor {
 	 * @return The dvcode's data.
 	 */
 	public boolean[] extract(IRGBImage image) {
-		return this.extract(image, new BlurApplicator());
+		return this.extract(image, new BlurApplicator(), 2, new TypeDeterminator());
 	}
 	
-	public boolean[] extract(IRGBImage image, BlurApplicator bA) {
+	public boolean[] extract(IRGBImage image, BlurApplicator bA, int blurRadius, TypeDeterminator tD) {
 		FloatingImage blurredImage;
-		if (this.blurRadius <= 1) blurredImage = bA.applyCroppedBlurRGB(new FloatingImage(image), this.blurRadius);
+		if (blurRadius <= 1) blurredImage = bA.applyCroppedBlurRGB(new FloatingImage(image), blurRadius);
 		else blurredImage = new FloatingImage(image);
 		
-		//int[][]
+		int[][] pixelTypes = tD.determineTypes(blurredImage);
+		
+		TestStart.outTypes(pixelTypes);
+		
 		return null;
 	}
 }
