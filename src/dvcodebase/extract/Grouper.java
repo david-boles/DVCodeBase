@@ -1,12 +1,24 @@
 package dvcodebase.extract;
 
-import com.deb.lib.program.Logger;
-
-import dvcodebase.testing.TestStart;
-
 public class Grouper {
+
+	public void group(int[][] types) {
+		Pixel[][] pixels = new Pixel[types.length][types[0].length];
+		
+		for(int x = 0; x < types.length; x++) {
+			for(int y = 0; y < types[0].length; y++) {
+				pixels
+			}
+		}
+		
+		for(int x = 0; x < types.length; x++) {
+			for(int y = 0; y < types[0].length; y++) {
+				
+			}
+		}
+	}
 	
-	int[][] types;
+	/*int[][] types;
 	int[][] groups;
 	int numGroups;
 	
@@ -59,5 +71,5 @@ public class Grouper {
 			this.groups[x][y-1] = this.groups[x][y];
 			updateGroups(x, y-1);
 		}}catch(Exception e){}
-	}
+	}*/
 }
