@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Group {
 	
-	ArrayList<Pixel> pixels;
+	ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	
 	public void merge(Group g) {
 		while(g.pixels.size() > 0) {
@@ -14,7 +14,7 @@ public class Group {
 	}
 	
 	public void add(Pixel p) {
-		p.group.remove(p);
+		try{p.group.remove(p);}catch(Exception e){}
 		p.group = this;
 		pixels.add(p);
 	}

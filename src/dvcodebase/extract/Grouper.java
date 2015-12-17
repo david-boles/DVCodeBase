@@ -1,19 +1,51 @@
 package dvcodebase.extract;
 
+import java.util.ArrayList;
+
 public class Grouper {
 
 	public void group(int[][] types) {
 		Pixel[][] pixels = new Pixel[types.length][types[0].length];
+		ArrayList<Group> groups = new ArrayList<>();
 		
 		for(int x = 0; x < types.length; x++) {
 			for(int y = 0; y < types[0].length; y++) {
-				pixels
+				int xPType = -1;
+				int xNType = -1;
+				int yPType = -1;
+				int yNType = -1;
+
+				try{xPType = types[x+1][y];}catch(Exception e) {}
+				try{xNType = types[x-1][y];}catch(Exception e) {}
+				try{yPType = types[x][y+1];}catch(Exception e) {}
+				try{yNType = types[x][y-1];}catch(Exception e) {}
+				
+				Pixel p = new Pixel(types[x][y], x, y, null, xPType, xNType, yPType, yNType);
+				Group g = new Group();
+				g.add(p);
+				p.group = g;
+				
+				pixels[x][y] = p;
+				groups.add(g);
 			}
 		}
 		
 		for(int x = 0; x < types.length; x++) {
 			for(int y = 0; y < types[0].length; y++) {
+				if(pixels[x][y].xPType == pixels[x][y].type) {
+					pixels[x][y].group.merge(pixels[x+1][y].group);
+				}
 				
+				if(pixels[x][y].yPType == pixels[x][y].type) {
+					pixels[x][y].group.merge(pixels[x][y+1].group);
+				}
+			}
+		}
+		
+		for(int i = 0; i < groups.size(); i++) {
+			if(groups.get(i).pixels.size() == 0){
+				groups.remove(0);
+				i--;
 			}
 		}
 	}
