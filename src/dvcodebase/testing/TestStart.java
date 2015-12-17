@@ -30,5 +30,15 @@ public class TestStart {
 		
 		f.getToIRGB().writeImage("png", ProgramFs.getProgramFile("testing/types.png"));
 	}
+	
+	public static void outGroups(int[][] groups, int gTotal) {
+		FloatingImage out = new FloatingImage(groups.length, groups[0].length, 1, BufferedImage.TYPE_BYTE_GRAY);
+		for(int x = 0; x < groups.length; x++) {
+			for(int y = 0; y < groups[0].length; y++) {
+				out.setPixel(x, y, new float[]{((float)groups[x][y])/gTotal});
+			}
+		}
+		out.getToBGRAY().writeImage("png", ProgramFs.getProgramFile("testinf/grouptest.png"));
+	}
 
 }
