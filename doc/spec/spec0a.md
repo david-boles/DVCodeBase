@@ -4,7 +4,7 @@
 - A group contains a group of adjacent pixels with the same component (red, green, blue) as most intense.
 - References to children (determined by their parent) and a parent (determined by adjacent group of lowest tier, if more than one, dvcode is invalid).
 - Tier determined by number of indirect parents.
-- Type {R, G, B} determined by most intense color component.
+- Type {R, G, B} determined by most intense color component. If components are of equal intensity it is undefined but the dvcode is not invalid.
 
 ###Initial Group
 - Surrounds all other groups in a dvcode.
