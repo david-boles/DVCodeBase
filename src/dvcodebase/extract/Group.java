@@ -7,7 +7,7 @@ public class Group {
 	ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	
 	public void merge(Group g) {
-		while(g.pixels.size() > 0) {
+		while(g.pixels.size() != 0) {
 			this.pixels.add(g.pixels.get(0));
 			g.pixels.remove(0);
 		}

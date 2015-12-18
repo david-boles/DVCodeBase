@@ -12,7 +12,7 @@ import dvcodebase.extract.DVCodeExtractor;
 public class TestStart {
 
 	public static void main(String[] args) {
-		IRGBImage i = new IRGBImage(ProgramFs.getProgramFile("testing/test5.png"));
+		IRGBImage i = new IRGBImage(ProgramFs.getProgramFile("testing/test.png"));
 		DVCodeExtractor dv = new DVCodeExtractor();
 		dv.extract(i);
 

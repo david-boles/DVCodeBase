@@ -2,6 +2,8 @@ package dvcodebase.extract;
 
 import java.util.ArrayList;
 
+import com.deb.lib.program.Logger;
+
 public class Grouper {
 
 	public void group(int[][] types) {
@@ -28,26 +30,32 @@ public class Grouper {
 				pixels[x][y] = p;
 				groups.add(g);
 			}
+			Logger.uLogger.log("Setting up column complete", x);
 		}
 		
 		for(int x = 0; x < types.length; x++) {
 			for(int y = 0; y < types[0].length; y++) {
 				if(pixels[x][y].xPType == pixels[x][y].type) {
+					Logger.uLogger.log("Merging x+");
 					pixels[x][y].group.merge(pixels[x+1][y].group);
 				}
 				
 				if(pixels[x][y].yPType == pixels[x][y].type) {
+					Logger.uLogger.log("Merging y+");
 					pixels[x][y].group.merge(pixels[x][y+1].group);
 				}
 			}
+			Logger.uLogger.log("Merging column complete", x);
 		}
 		
 		for(int i = 0; i < groups.size(); i++) {
+			Logger.uLogger.logMore("Group size", new Object[]{i, groups.get(0).pixels.size()});
 			if(groups.get(i).pixels.size() == 0){
 				groups.remove(0);
 				i--;
 			}
 		}
+		System.out.println(groups.size());
 	}
 	
 	/*int[][] types;
